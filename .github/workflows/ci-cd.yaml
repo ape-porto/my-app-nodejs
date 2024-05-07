@@ -15,7 +15,7 @@ jobs:
         curl -H "Content-Type: application/json" \
              -X POST \
              -d '{"content": "Novo Pull Request criado em ${GITHUB_REPOSITORY} por ${GITHUB_ACTOR}"}' \
-             YOUR_WEBHOOK_URL
+             https://webhook.site/60456568-6957-4141-8deb-207cd5152379
   build:
     runs-on: ubuntu-latest
     steps:
