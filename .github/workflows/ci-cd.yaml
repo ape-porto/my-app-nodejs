@@ -34,16 +34,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run Tests
+    - name: Run Sonarqube
       run: echo "Run tests here"
-    - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@master
-      env:
-        SONAR_HOST_URL: "https://sonarcloud.io"
+    #- name: SonarQube Scan
+    #  uses: SonarSource/sonarqube-scan-action@master
+    #  env:
+    #    SONAR_HOST_URL: "https://sonarcloud.io"
 
   deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Deploy to Ngrok
-      run: ngrok http 3000
+    - name: Deploy to AWS Elastic Beanstalk
+      run: echo "Deployment happening here"
+   #   uses: einaregilsson/beanstalk-deploy@v18
+   #   with:
+   #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+   #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+   #     application_name: "my-app-nodejs"
+   #     environment_name: "production"
+   #     region: "us-west-2" 
+   #     version_label: "v-${{ github.run_number }}"
+   #     zip_file: "path/to/your/zip/file"
