@@ -7,6 +7,15 @@ on:
     branches: [ main ]
 
 jobs:
+ notification:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Discord Notification on PR
+      run: |
+        curl -H "Content-Type: application/json" \
+             -X POST \
+             -d '{"content": "Novo Pull Request criado em ${GITHUB_REPOSITORY} por ${GITHUB_ACTOR}"}' \
+             YOUR_WEBHOOK_URL
   build:
     runs-on: ubuntu-latest
     steps:
@@ -15,6 +24,10 @@ jobs:
       run: |
         docker build -t apeportob/my-app-nodejs .
         docker push apeportob/my-app-nodejs:latest
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@master
+      env:
+        SONAR_HOST_URL: "https://sonarcloud.io"
 
   test:
     runs-on: ubuntu-latest
