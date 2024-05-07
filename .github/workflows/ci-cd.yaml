@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
- notification:
+  notification:
     runs-on: ubuntu-latest
     steps:
     - name: Discord Notification on PR
